@@ -1,0 +1,55 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int together(string name1, string name2)
+{
+    int sec=1, seat_no=1;
+    cout<<"\tSection: "<<sec<<endl;
+    cout<<"Name   : "<<name1<<" and "<<name2<<endl;
+    cout<<"Seat no: "<<seat_no;seat_no++;cout<<" and "<<seat_no<<endl;
+};
+int saperate(string name1, string name2)
+{
+    int sec=1, seat_no=1;
+    cout<<"\tSection: "<<sec<<endl;sec++;
+    cout<<"Name   : "<<name1<<endl;
+    cout<<"Seat no: "<<seat_no<<endl;seat_no++;
+
+    cout<<"\tSection: "<<sec<<endl;sec++;
+    cout<<"Name   : "<<name2<<endl;
+    cout<<"Seat no: "<<seat_no<<endl;seat_no++;
+
+};
+
+int main()
+{
+    int t=2;
+    string name[t];
+    int your_cata[t],no_passengers[t],priority[t];
+    for(int i=0;i<t;i++)
+    {
+        cout<<"Name: "; cin>>name[i];
+        cout<<"\n1. Solo \n2.Family \n3. Couple \n4. Large family\n5. Senior citizen"<<endl;
+        cout<<"\nYour catagory: ";cin>>your_cata[i];
+        cout<<"No of passengers: ";cin>>no_passengers[i];
+        cout<<"\n1. Solo \n2.Family \n3. Couple \n4. Large family\n5. Senior citizen"<<endl;
+        cout<<"\nPriority: ";cin>>priority[i];
+    }
+    cout<<"Processing..."<<endl;
+    int sec=1, seat_no=1;
+    for(int i=1;i<t;i++)
+    {
+        if(your_cata[i]==priority[i-1] && your_cata[i-1]==priority[i])
+        {
+            together(name[i],name[i-1]);
+        }
+        else if(your_cata[i]!=priority[i-1] && your_cata[i-1]!=priority[i])
+        {
+            saperate(name[i],name[i-1]);
+        }
+        else
+        {
+            cout<<"*work in progress*"<<endl;
+        }
+    }
+}
