@@ -1,0 +1,63 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int overflow (int sec)
+{
+    sec++;
+}
+
+int together(string name1, string name2)
+{
+    int sec=1, seat_no=1;
+    cout<<"-----Section: "<<sec<<endl;
+    cout<<"Name   : "<<name1<<endl;
+    cout<<"Seat no: "<<seat_no<<endl;seat_no++;
+    cout<<"---------AND---------"<<endl;
+    cout<<"Name   : "<<name2<<endl;
+    cout<<"Seat no: "<<seat_no<<endl;seat_no++;
+};
+int saperate(string name1, string name2)
+{
+    int sec=1, seat_no=1;
+    cout<<"-----Section: "<<sec<<endl;sec++;
+    cout<<"Name   : "<<name1<<endl;
+    cout<<"Seat no: "<<seat_no<<endl;seat_no++;
+
+    seat_no=1;
+    cout<<"-----Section: "<<sec<<endl;sec++;
+    cout<<"Name   : "<<name2<<endl;
+    cout<<"Seat no: "<<seat_no<<endl;seat_no++;
+
+};
+
+int main()
+{
+    int t=3;
+    string pass_info[t][3];
+    int no_passengers;
+    for(int i=0;i<t;i++)
+        {
+            cout<<"Name: "; cin>>pass_info[i][0];                                                   //Name 00
+            cout<<"No of passengers: ";cin>>no_passengers;                                          //no of passengers
+            cout<<"\n1. Solo \n2.Family \n3. Couple \n4. Large family\n5. Senior citizen"<<endl;
+            cout<<"\nYour catagory: ";cin>>pass_info[i][1];                                         //yr catagory 01
+            cout<<"\n1. Solo \n2.Family \n3. Couple \n4. Large family\n5. Senior citizen"<<endl;
+            cout<<"\nPriority: ";cin>>pass_info[i][2];                                              //priority 02
+        }
+    //cout<<"...................."<<pass_info[1][1];
+
+    
+    for(int i=1;i<t;i++)
+    {
+        if(pass_info[i][1]==pass_info[i-1][2] && pass_info[i][2]==pass_info[i-1][1])
+        {
+            string name1=pass_info[i][0],name2=pass_info[i-1][0];
+            together(name1, name2);
+        }
+        else 
+        {
+            string name1=pass_info[i][0],name2=pass_info[i-1][0];
+            saperate(name1, name2);
+        }
+    }
+}
